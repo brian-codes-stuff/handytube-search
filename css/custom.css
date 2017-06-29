@@ -1,0 +1,28 @@
+.google-visualization-table div {
+	max-height: 400px !important;
+	width:98%;
+	display: block;
+	margin: -20px auto;
+		}
+
+.google-visualization-table-tr-head {
+    background-color: #013068;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+}
+
+.google-visualization-table .gradient {
+     background-image: none !important;
+    padding: 10px 20px !important;
+}
+
+.tab-content {
+    overflow: auto;
+    padding: 20px;
+}
+
+.nav-tabs {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 10px 0 10px;
+}
