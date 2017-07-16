@@ -9,13 +9,7 @@
 </head>
 <body>
 
-<ul class="nav nav-tabs" id="myTab">
-  <li class="active"><a href="#uns"><p>Search By UNS</p></a></li>
-  
-</ul>
- 
-<div class="tab-content">
-  <div class="tab-pane active" id="uns">
+
   
 	<form id="form1" method="post" action ="<?php echo $_SERVER['PHP_SELF']; ?>">
 	<div class="row">
@@ -92,110 +86,20 @@ google.setOnLoadCallback(drawVisualization);
   
   <div id="table"></div>
   
-	  </div>
-	  
-
- <div class="tab-pane" id="properties">
- <form id="form2" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
- <div class="row">
- 	<div class="span4">
-  	<select id="search2" name="search2" type="text">
-		  										<option value="WHERE O">Please select one of the search criteria from below.</option>
-          									  	<option value="WHERE H">C - Carbon</option>
-												<option value="WHERE J">Ni - Nickel</option>
-												<option value="WHERE I">Cr - Chrome</option>
-												<option value="WHERE K">Mo - Molybdenum</option>
-												<option value="WHERE P">Tensile Strength Rm</option>
-												<option value="WHERE O">Yield Strength Rp</option>
-												<option value="WHERE Q">Elongation %</option>
-												<option value="WHERE R">Hardness</option>
-								          	</select>
-	 </div>
-	 <div class="span2">
-	 	<select id="search3" name="search3"  type="text">
-													  
-														  <option value=">=">Greater Than</option>
-														  <option value="<=">Less Than</option>
-													</select>
-	 </div>
-	 <div class="span3">
-	 <input id="search4" name="search4"  type="number" value="0" step=".001">
-	 </div>
-	 <div class="span3">
-	 	<input id="clickprop" type="submit" style="float:left;" />
-	 </div>
-	 </div>	
-	 </form>
-	 
-	 <?php
 	
-	
-$search2= $_REQUEST['search2'];
-if ($search2 > ''){ $search2 = $search2;} else { $search2 = '';}
-	
-	$search3= $_REQUEST['search3'];
-if ($search3 > ''){ $search3 = $search3;} else { $search3 = '';}
-	
-	$search4= $_REQUEST['search4'];
-if ($search4 > ''){ $search4 = $search4;} else { $search4 = '';}
-	
-	
-?>
-
-
-
-<script type="text/javascript">
-	
-google.load('visualization', '1', {packages: ['table2']});
-</script>
-
-<script type="text/javascript">
-var visualization;
-
- function drawVisualization2() {
-
-var query = new google.visualization.Query(
-'https://spreadsheets.google.com/tq?key=1M1ZExBMFdUvV9XKiORJekZ9Esz4bx0XgGDKHiVoiRkw');
-
-query.setQuery('SELECT *  <?php echo $search2; ?> <?php echo $search3; ?> <?php echo $search4; ?> ');
-
-query.send(handleQueryResponse);
-}
-
-function handleQueryResponse(response) {
-if (response.isError()) {
-alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
-return;
-}
-
-var data2 = response.getDataTable();
-
-visualization = new google.visualization.Table(document.getElementById('table2'));
-visualization.draw(data2, {legend: 'bottom'});
-
-}
-
-google.setOnLoadCallback(drawVisualization2);
-</script>
-
-
-	 
-	 <div id="table2"></div>
- </div>
-</div>
  
 
 
 
 
-</div>
+
+	
    <script>
 	$('#myTab a').click(function (e) {
   e.preventDefault();
   $(this).tab('show');
 })
-	
-	$('#myTab a[href="#properties"]').tab('show'); // Select tab by name
+
 $('#myTab a:first').tab('show'); // Select first tab
 $('#myTab a:last').tab('show'); // Select last tab
 $('#myTab li:eq(2) a').tab('show'); // Select third tab (0-indexed)
